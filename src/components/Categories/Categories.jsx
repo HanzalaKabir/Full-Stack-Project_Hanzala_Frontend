@@ -37,7 +37,6 @@ export const Categories = () => {
   const handleCategoryClick = (category) => {
     sethotelCategory(category);
   };
-  console.log(hotelCategory);
 
   return (
     <section className="d-flex align-scenter gap-large categories cursor-pointer">
