@@ -18,7 +18,7 @@ export const SingleHotel = () => {
       (async () => {
         try {
           const { data } = await axios.get(
-            `https://fair-lime-angler-toga.cyclic.app/api/hotels/${id}`
+            `https://full-stack-project-hanzala-backend.onrender.com/api/hotels/${id}`
           );
           setSingleHotel(data);
         } catch (err) {

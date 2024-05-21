@@ -16,7 +16,7 @@ export const Home = () => {
     (async () => {
       try {
         const { data } = await axios.get(
-          `https://fair-lime-angler-toga.cyclic.app/api/hotels?category=${hotelCategory}`
+          `https://full-stack-project-hanzala-backend.onrender.com/api/hotels?category=${hotelCategory}`
         );
         setTestData(data);
         setHotels(data ? data.slice(0, 16) : []);
