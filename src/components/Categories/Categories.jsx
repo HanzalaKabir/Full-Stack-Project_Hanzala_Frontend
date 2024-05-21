@@ -21,7 +21,7 @@ export const Categories = () => {
     (async () => {
       try {
         const { data } = await axios.get(
-          "https://fair-lime-angler-toga.cyclic.app/api/category"
+          "https://full-stack-project-hanzala-backend.onrender.com/api/category"
         );
         const categoriesToShow = data.slice(
           numberOfCategoriesToShow,
