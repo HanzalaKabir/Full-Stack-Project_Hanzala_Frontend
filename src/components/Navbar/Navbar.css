@@ -45,9 +45,15 @@
   padding: 8px;
   font-size: 1.875rem;
 }
+
 .material-icons-outlined.profile-option {
   font-size: 2.5rem;
 }
+
+.material-icons-outlined.profile-option:hover{
+  cursor: pointer;
+}
+
 .profile-option {
   color: var(--text-color-primary);
 }

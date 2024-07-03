@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router";
-import { Home, SingleHotel } from "./pages";
+import { Home, SearchResults, SingleHotel } from "./pages";
 
 import "./App.css";
 
@@ -11,6 +11,7 @@ function App() {
         path="/hotels/:name/:address/:id/reserve"
         element={<SingleHotel />}
       />
+      <Route path="/hotels/:address" element={<SearchResults />} />
     </Routes>
   );
 }

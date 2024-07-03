@@ -1,9 +1,9 @@
 import { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { useCategory } from "../../context";
+import { useCategory, useDate } from "../../context";
 
-import { Navbar, HotelCard, Categories } from "../../components";
+import { Navbar, HotelCard, Categories, SearchStayWithDate } from "../../components";
 import "./Home.css";
 
 export const Home = () => {
@@ -12,6 +12,8 @@ export const Home = () => {
   const [currentIndex, setCurrentIndex] = useState(16);
   const [hotels, setHotels] = useState([]);
   const { hotelCategory } = useCategory();
+  const {isSearchModalOpen}=useDate();
+
   useEffect(() => {
     (async () => {
       try {
@@ -43,7 +45,7 @@ export const Home = () => {
     }, 1000);
   };
   return (
-    <Fragment>
+    <div className="relative">
       <Navbar />
       <Categories />
       {hotels && hotels.length > 0 ? (
@@ -66,6 +68,9 @@ export const Home = () => {
       ) : (
         <></>
       )}
-    </Fragment>
+      {
+        isSearchModalOpen && <SearchStayWithDate/>
+      }
+    </div>
   );
 };

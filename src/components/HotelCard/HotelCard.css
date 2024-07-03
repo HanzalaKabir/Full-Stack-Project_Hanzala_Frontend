@@ -3,6 +3,9 @@
   border-radius: 4px;
   background-color: var(--background-color);
 }
+.hotelcard-container:hover{
+  cursor: pointer;
+}
 
 .img {
   width: 100%;
