@@ -26,7 +26,7 @@ export const HotelDetails = ({ singleHotel }) => {
       <div className="key-features host-details">
         <div className="gutter-bottom-small">
           <p className="p d-flex align-center gap">
-            <span class="apps material-icons-outlined">apps</span>Dedicated
+            <span className="apps material-icons-outlined">apps</span>Dedicated
             Workspace
           </p>
           <span className="span">
@@ -35,14 +35,15 @@ export const HotelDetails = ({ singleHotel }) => {
         </div>
         <div className="gutter-bottom-small">
           <p className="p d-flex align-center gap">
-            <span class="apps material-icons-outlined">apps</span>Great Location
+            <span className="apps material-icons-outlined">apps</span>Great
+            Location
           </p>
           <span className="span">
             80% of recent guests gave the location a 5-star rating
           </span>
         </div>
         <p className="p d-flex align-center gap">
-          <span class="apps material-icons-outlined">apps</span>Free
+          <span className="apps material-icons-outlined">apps</span>Free
           cancellation before 7 days of check-in
         </p>
       </div>
@@ -56,7 +57,7 @@ export const HotelDetails = ({ singleHotel }) => {
                 return (
                   <>
                     <span className="span d-flex align-center gap">
-                      <span class="apps material-icons-outlined features">
+                      <span className="apps material-icons-outlined features">
                         apps
                       </span>
                       {aminity}
@@ -67,12 +68,12 @@ export const HotelDetails = ({ singleHotel }) => {
           </div>
           <div className="d-flex direction-column">
             <span className="span d-flex align-center gap features">
-              <span class="apps material-icons-outlined">apps</span>Free parking
-              on premises
+              <span className="apps material-icons-outlined">apps</span>Free
+              parking on premises
             </span>
             <span className="span d-flex align-center gap features">
-              <span class="apps material-icons-outlined">apps</span>Dedicated
-              Workspace
+              <span className="apps material-icons-outlined">apps</span>
+              Dedicated Workspace
             </span>
           </div>
         </div>
@@ -81,10 +82,10 @@ export const HotelDetails = ({ singleHotel }) => {
         <p className="p amenities">What this place offers</p>
         <div className="d-flex direction-column gap">
           <span className="span d-flex align-center gap">
-            <span class="material-icons-outlined">apps</span>Kitchen
+            <span className="material-icons-outlined">apps</span>Kitchen
           </span>
           <span className="span d-flex align-center gap">
-            <span class="material-icons-outlined">apps</span>Free parking on
+            <span className="material-icons-outlined">apps</span>Free parking on
             premises
           </span>
         </div>

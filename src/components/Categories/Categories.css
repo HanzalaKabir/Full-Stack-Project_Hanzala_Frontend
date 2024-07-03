@@ -16,6 +16,10 @@
   margin: 0 1rem 0 0;
 }
 
+.category_item:hover{
+  cursor: pointer;
+}
+
 .gap-large {
   gap: 2rem;
 }
