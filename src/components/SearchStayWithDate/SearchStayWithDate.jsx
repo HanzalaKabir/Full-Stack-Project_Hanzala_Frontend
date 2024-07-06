@@ -58,6 +58,12 @@ export const SearchStayWithDate = () => {
     navigate(`/hotels/${destination}`);
   };
 
+  const handleCloseClick = () => {
+    dateDispatch({
+      type: "CLOSE_SEARCH_MODAL",
+    });
+  };
+
   const destinationOptions = hotels.filter(
     ({ address, city, state, country }) =>
       address.toLowerCase().includes(destination.toLowerCase()) ||
@@ -103,6 +109,11 @@ export const SearchStayWithDate = () => {
         >
           <span className="material-icons-outlined">search</span>
           <span>Search</span>
+        </div>
+        <div className="close-button-container d-flex align-center">
+          <span className=" material-icons-outlined" onClick={handleCloseClick}>
+            close
+          </span>
         </div>
       </div>
       {isSearchResultOpen && (

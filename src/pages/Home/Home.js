@@ -1,10 +1,23 @@
+import "./Home.css";
 import { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { useCategory, useDate } from "../../context";
+import { useCategory, useDate, useFilter } from "../../context";
+import {
+  getHotelsByPrice,
+  getHotelsByRoomsAndBeds,
+  getHotelsByPropertyType,
+  getHotelsByRatings,
+  getHotelsByCancelation,
+} from "../../utils";
 
-import { Navbar, HotelCard, Categories, SearchStayWithDate } from "../../components";
-import "./Home.css";
+import {
+  Navbar,
+  HotelCard,
+  Categories,
+  SearchStayWithDate,
+  Filter,
+} from "../../components";
 
 export const Home = () => {
   const [hasMore, setHasMore] = useState(true);
@@ -12,7 +25,17 @@ export const Home = () => {
   const [currentIndex, setCurrentIndex] = useState(16);
   const [hotels, setHotels] = useState([]);
   const { hotelCategory } = useCategory();
-  const {isSearchModalOpen}=useDate();
+  const { isSearchModalOpen } = useDate();
+  const {
+    isFilterModalOpen,
+    priceRange,
+    noOfBathrooms,
+    noOfBedrooms,
+    noOfBeds,
+    propertyType,
+    travelRatings,
+    isCancelable,
+  } = useFilter();
 
   useEffect(() => {
     (async () => {
@@ -44,6 +67,27 @@ export const Home = () => {
       }
     }, 1000);
   };
+
+  const filteredHotelByPrice = getHotelsByPrice(hotels, priceRange);
+  const filteredHotelByBedsAndRooms = getHotelsByRoomsAndBeds(
+    filteredHotelByPrice,
+    noOfBathrooms,
+    noOfBedrooms,
+    noOfBeds
+  );
+  const filteredHotelsByPropertyType = getHotelsByPropertyType(
+    filteredHotelByBedsAndRooms,
+    propertyType
+  );
+  const filteredHotelsByRatings = getHotelsByRatings(
+    filteredHotelsByPropertyType,
+    travelRatings
+  );
+  const filteredHotelsByCancelation = getHotelsByCancelation(
+    filteredHotelsByRatings,
+    isCancelable
+  );
+
   return (
     <div className="relative">
       <Navbar />
@@ -59,8 +103,8 @@ export const Home = () => {
           endMessage={<p className="alert-text">You have seen it all</p>}
         >
           <main className="main d-flex align-center wrap gap-larger">
-            {hotels &&
-              hotels.map((hotel) => (
+            {filteredHotelsByCancelation &&
+              filteredHotelsByCancelation.map((hotel) => (
                 <HotelCard key={hotel._id} hotel={hotel} />
               ))}
           </main>
@@ -68,9 +112,8 @@ export const Home = () => {
       ) : (
         <></>
       )}
-      {
-        isSearchModalOpen && <SearchStayWithDate/>
-      }
+      {isSearchModalOpen && <SearchStayWithDate />}
+      {isFilterModalOpen && <Filter />}
     </div>
   );
 };
