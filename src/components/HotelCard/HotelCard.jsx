@@ -1,13 +1,43 @@
 import "./HotelCard.css";
 import { useNavigate } from "react-router-dom";
+import { useWishlist, useAuth } from "../../context";
+import { findHotelInWishlist } from "../../utils";
 
 export const HotelCard = ({ hotel }) => {
   const { _id, name, image, address, state, rating, price } = hotel;
+
+  const { wishlistDispatch, wishlist } = useWishlist();
+
+  const isHotelInWishlist = findHotelInWishlist(wishlist, _id);
+
+  const { accessToken, authDispatch } = useAuth();
+  console.log({ accessToken });
 
   const navigate = useNavigate();
 
   const handleHotelCardClick = () => {
     navigate(`/hotels/${name}/${address}-${state}/${_id}/reserve`);
+  };
+
+  const handleWishlistClick = () => {
+    if (accessToken) {
+      if (!isHotelInWishlist) {
+        wishlistDispatch({
+          type: "ADD_TO_WISHLIST",
+          payload: hotel,
+        });
+        navigate("wishlist");
+      } else {
+        wishlistDispatch({
+          type: "REMOVE_FROM_WISHLIST",
+          payload: _id,
+        });
+      }
+    } else {
+      authDispatch({
+        type: "SHOW_AUTH_MODAL",
+      });
+    }
   };
 
   return (
@@ -32,8 +62,15 @@ export const HotelCard = ({ hotel }) => {
         </div>
       </div>
 
-      <button className="button btn-wishlist absolute">
-        <span className="material-icons-outlined cursor favorite">
+      <button
+        className="button btn-wishlist absolute"
+        onClick={handleWishlistClick}
+      >
+        <span
+          className={`material-icons-outlined cursor favorite ${
+            isHotelInWishlist ? "fav-selected" : ""
+          }`}
+        >
           favorite
         </span>
       </button>
