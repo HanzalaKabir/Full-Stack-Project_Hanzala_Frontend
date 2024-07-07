@@ -34,10 +34,11 @@ export const AuthLogin = () => {
     }
   };
 
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
     if (isNumberValid && isPasswordValid) {
-      const { accessToken, username } = loginHandler(number, password);
+      const { accessToken, username } = await loginHandler(number, password);
+      console.log("from login", { accessToken, username });
       authDispatch({
         type: "SET_ACCESS_TOKEN",
         payload: accessToken,
@@ -78,6 +79,7 @@ export const AuthLogin = () => {
           </label>
           <input
             className="auth-input"
+            type="password"
             placeholder="Enter Password"
             required
             onChange={handlePasswordChange}

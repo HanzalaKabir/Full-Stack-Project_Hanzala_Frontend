@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router";
-import { Home, SearchResults, SingleHotel } from "./pages";
+import { Home, SearchResults, SingleHotel, Wishlist } from "./pages";
 import "./App.css";
 
 function App() {
@@ -11,6 +11,7 @@ function App() {
         element={<SingleHotel />}
       />
       <Route path="/hotels/:address" element={<SearchResults />} />
+      <Route path="/Wishlist" element={<Wishlist />} />
     </Routes>
   );
 }
