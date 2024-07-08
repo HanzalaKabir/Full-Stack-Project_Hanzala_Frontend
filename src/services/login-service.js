@@ -3,7 +3,7 @@ import axios from "axios";
 export const loginHandler = async (number, password) => {
   try {
     const {
-      data: { accessToken: accessToken, username },
+      data: { accessToken, username },
     } = await axios.post(
       "https://full-stack-project-hanzala-backend.onrender.com/api/auth/login",
       {
