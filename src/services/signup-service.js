@@ -1,7 +1,7 @@
 import axios from "axios";
 export const signupHandler = async (username, number, email, password) => {
   try {
-    const data = await axios.post(
+    await axios.post(
       "https://full-stack-project-hanzala-backend.onrender.com/api/auth/register",
       {
         username: username,

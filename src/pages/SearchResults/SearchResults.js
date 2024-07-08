@@ -20,7 +20,7 @@ export const SearchResults = () => {
         console.log(err);
       }
     })();
-  }, []);
+  }, [hotelCategory]);
 
   const filteredSearchResults = hotels.filter(
     ({ city, address, state }) =>
